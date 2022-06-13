@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import postRoutes from "./routes/posts.js";
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -11,8 +12,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use("/posts", postRoutes);
 
 // clout/atlas
-const CONNECTION_URL =
-  "mongodb+srv://Rty-i4:MongoDB@nodetuts.9d2iy.mongodb.net/?retryWrites=true&w=majority";
+const CONNECTION_URL = process.env.MONGODB_URL;
 
 const PORT = process.env.PORT || 9000;
 
